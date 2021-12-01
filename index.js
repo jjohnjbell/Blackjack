@@ -1,6 +1,7 @@
 window.onload = function () {
     let currentNum = 0
     let blackjack = false;
+    let gameEnd = false
 
     let sumEl = document.getElementById("sum-el")
     let newGame = document.getElementById("newGameBtn")
@@ -14,29 +15,33 @@ window.onload = function () {
 
 
     newGame.addEventListener("click", function () {
+        if (!blackjack && !gameEnd) {
             let pic = document.createElement('img')
             let ran = Math.floor(Math.random() * 11)
             pic.src = cardPath[ran]
-            boardEl.appendChild(pic)
-            checkWin()
             currentNum += ran + 1
+            boardEl.appendChild(pic)
             sumEl.textContent = ` Sum:  ${currentNum}`
-    })
+            if (currentNum === 21) {
+                blackjack = true
+                gameEnd = true
+                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${currentNum}`
 
-    function checkWin(){
-       if (currentNum === 21) {
-            blackjack = true
-            sumEl.textContent = `Congratulations! You Won!`
-        } else {
-            blackjack = false
-            sumEl.textContent = `Sorry! You lost! New Game?`
+            } else if (currentNum > 21) {
+                blackjack = false
+                gameEnd = true
+                sumEl.textContent = `Sorry, you lost! ${currentNum}`
+            }
+
         }
-    }
+    })
 
     resetBut.addEventListener("click", function () {
         boardEl.innerHTML = ""
         currentNum = 0
         sumEl.textContent = ""
+        gameEnd = false
+        blackjack = false
     })
 
 
