@@ -28,12 +28,12 @@ window.onload = function () {
             if (total === 21) {
                 blackjack = true
                 gameEnd = true
-                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total}`
+                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total} Hit "Reset" to Replay!`
 
             } else if (total > 21) {
                 blackjack = false
                 gameEnd = true
-                sumEl.textContent = `Sorry, you lost! ${total}`
+                sumEl.textContent = `Sorry, you lost! ${total}, Click "Reset" to Replay!`
             }
 
         }
