@@ -28,11 +28,14 @@ img {
 
 #board {
     display: flex;
-    align-items: center;
+    align-items:center;
+    position:relative;
     flex-direction: row;
+    flex-wrap:wrap;
     border: 2px dotted black;
     width: 75%;
-    height: 200px;
+    height: auto;
+    min-height: 200px;
     background-color: #4c9d8b82;
 }
 
