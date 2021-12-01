@@ -1,0 +1,8 @@
+{
+    "manifest_version": 1,
+    "version": "1.0",
+    "name": "Black Jack",
+    "action": {
+        "default_popup": "index.html"
+    }
+}

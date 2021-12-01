@@ -1,44 +1,48 @@
 window.onload = function () {
-    let currentNum = 0
+    let total = 0
     let blackjack = false;
     let gameEnd = false
-
     let sumEl = document.getElementById("sum-el")
-    let newGame = document.getElementById("newGameBtn")
-    let resetBut = document.getElementById("resetBtn")
 
-    let boardEl = document.getElementById("board")
+    const newGame = document.getElementById("newGameBtn")
+    const resetBut = document.getElementById("resetBtn")
+    const boardEl = document.getElementById("board")
     const cardPath = ["images/ace.png", "images/2.png", "images/3.png",
         "images/4.png", "images/5.png", "images/6.png", "images/7.png",
         "images/8.png", "images/9.png", "images/jack.jpg",
         "images/queen.png", "images/king.jpg"]
 
-
+    //Add Event Listener to "New Game" button to render the game
     newGame.addEventListener("click", function () {
         if (!blackjack && !gameEnd) {
+            //Add new image elements then provide them with random image paths using random index
             let pic = document.createElement('img')
             let ran = Math.floor(Math.random() * 11)
             pic.src = cardPath[ran]
-            currentNum += ran + 1
+            //Keep track of Total 
+            total += ran + 1
+            //Append the newly created Image elements to the div sectional
             boardEl.appendChild(pic)
-            sumEl.textContent = ` Sum:  ${currentNum}`
-            if (currentNum === 21) {
+            sumEl.textContent = ` Sum:  ${total}`
+            //Logics of Game
+            if (total === 21) {
                 blackjack = true
                 gameEnd = true
-                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${currentNum}`
+                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total}`
 
-            } else if (currentNum > 21) {
+            } else if (total > 21) {
                 blackjack = false
                 gameEnd = true
-                sumEl.textContent = `Sorry, you lost! ${currentNum}`
+                sumEl.textContent = `Sorry, you lost! ${total}`
             }
 
         }
     })
 
+    //Reset Button created to start a fresh Game
     resetBut.addEventListener("click", function () {
         boardEl.innerHTML = ""
-        currentNum = 0
+        total = 0
         sumEl.textContent = ""
         gameEnd = false
         blackjack = false
