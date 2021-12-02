@@ -15,6 +15,12 @@ window.onload = function () {
     //Add Event Listener to "New Game" button to render the game
     newGame.addEventListener("click", function () {
         if (!blackjack && !gameEnd) {
+            play()
+
+        }
+
+        function play() {
+            newGame.innerText = "HIT ME"
             //Add new image elements then provide them with random image paths using random index
             let pic = document.createElement('img')
             let ran = Math.floor(Math.random() * 11)
@@ -26,21 +32,36 @@ window.onload = function () {
             sumEl.textContent = ` Sum:  ${total}`
             //Logics of Game
             if (total === 21) {
-                blackjack = true
-                gameEnd = true
-                sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total} Hit "Reset" to Replay!`
+                won()
 
             } else if (total > 21) {
-                blackjack = false
-                gameEnd = true
-                sumEl.textContent = `Sorry, you lost! ${total}, Click "Reset" to Replay!`
-            }
+                
+               lost()
 
+            }
+        }
+
+        function won() {
+            newGame.innerText = "New Game"
+            blackjack = true
+            gameEnd = true
+            sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total}`
+
+        }
+
+        function lost() {
+            newGame.style.display = "none"
+            resetBut.innerText = "NEW GAME"
+            sumEl.textContent = `You Lost!  ${total}`
+            gameEnd = true
+          
         }
     })
 
     //Reset Button created to start a fresh Game
     resetBut.addEventListener("click", function () {
+        newGame.style.display = "inline"
+        resetBut.innerText = "RESET"
         boardEl.innerHTML = ""
         total = 0
         sumEl.textContent = ""
