@@ -24,13 +24,13 @@ window.onload = function () {
             //Add new image elements then provide them with random image paths using random index
             let pic = document.createElement('img')
             let ran = Math.floor(Math.random() * 11)
-            if(ran >=11){
-                ran =10
-            }
             pic.src = cardPath[ran]
-            console.log(ran)
-            //Keep track of Total 
-            total += ran + 1
+            if (ran >= 10) {
+                total += ran
+            } else {
+                //Keep track of Total 
+                total += ran + 1
+            }
             //Append the newly created Image elements to the div sectional
             boardEl.appendChild(pic)
             sumEl.textContent = ` Sum:  ${total}`
@@ -39,14 +39,16 @@ window.onload = function () {
                 won()
 
             } else if (total > 21) {
-                
-               lost()
+
+                lost()
 
             }
+
         }
 
         function won() {
-            newGame.innerText = "New Game"
+            newGame.style.display = "none"
+            resetBut.innerText = "NEW GAME"
             blackjack = true
             gameEnd = true
             sumEl.textContent = `CONGRATULATIONS! YOU GOT BLACKJACK! ${total}`
@@ -58,7 +60,7 @@ window.onload = function () {
             resetBut.innerText = "NEW GAME"
             sumEl.textContent = `You Lost!  ${total}`
             gameEnd = true
-          
+
         }
     })
 
