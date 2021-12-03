@@ -24,7 +24,11 @@ window.onload = function () {
             //Add new image elements then provide them with random image paths using random index
             let pic = document.createElement('img')
             let ran = Math.floor(Math.random() * 11)
+            if(ran >=11){
+                ran =10
+            }
             pic.src = cardPath[ran]
+            console.log(ran)
             //Keep track of Total 
             total += ran + 1
             //Append the newly created Image elements to the div sectional
