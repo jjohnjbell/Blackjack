@@ -26,17 +26,22 @@ img {
     display:none;
 } */
 
-#board {
+#player-board, #dealer-board {
     display: flex;
     align-items:center;
-    position:relative;
+    /* position:relative; */
     flex-direction: row;
     flex-wrap:wrap;
     border: 2px dotted black;
+    margin: 5px;
     width: 75%;
     height: auto;
     min-height: 200px;
     background-color: #4c9d8b82;
+}
+
+#dealer-board{
+    background-color:#3c6db966;
 }
 
 button {
