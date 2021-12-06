@@ -26,6 +26,15 @@ img {
     display:none;
 } */
 
+.tags {
+    display:flex;
+    flex-direction: row;
+    align-items: left;
+    font-weight:bold;
+    font-size: 27px;
+    padding-bottom: -9px;
+}
+
 #player-board, #dealer-board {
     display: flex;
     align-items:center;
@@ -38,6 +47,7 @@ img {
     height: auto;
     min-height: 200px;
     background-color: #4c9d8b82;
+    margin-top:-20px;
 }
 
 #dealer-board{
